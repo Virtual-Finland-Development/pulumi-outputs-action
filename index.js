@@ -5,13 +5,13 @@ const axios = require('axios');
 (async () => {
   try {
     const org = core.getInput('pulumi-organization');
-    console.log(`Org ${org}!`);
+    console.log(`Org: ${org}`);
     const project = core.getInput('pulumi-project');
-    console.log(`Project ${project}!`);
+    console.log(`Project: ${project}`);
     const stack = core.getInput('pulumi-stack');
-    console.log(`Stack ${stack}!`);
+    console.log(`Stack: ${stack}`);
     const resourceName = core.getInput('pulumi-resource');
-    console.log(`Resource ${resourceName}!`);
+    console.log(`Resource: ${resourceName}`);
     const accessToken = core.getInput('pulumi-access-token');
     // console.log(`token ${accessToken}!`);
 
@@ -35,7 +35,10 @@ const axios = require('axios');
       r => r.type === 'pulumi:pulumi:Stack'
     );
 
-    if (resourceObject) {
+    console.log('resourceObject:', resourceObject);
+
+    if (resourceObject?.outputs) {
+      console.log('outputs found!');
       resourceOutput = resourceObject.outputs[`${resourceName}`] || '';
     }
 
