@@ -27,7 +27,7 @@ const axios = require('axios');
       },
     });
 
-    console.log(response);
+    console.log(response.data);
 
     let resourceOutput = '';
 
@@ -39,7 +39,7 @@ const axios = require('axios');
       resourceOutput = resourceObject.outputs[`${resourceName}`] || '';
     }
 
-    core.setOutput('resource-output', response.data?.deployment?.resources);
+    core.setOutput('resource-output', resourceOutput);
     // Get the JSON webhook payload for the event that triggered the workflow
     const payload = JSON.stringify(github.context.payload, undefined, 2);
     console.log(`The event payload: ${payload}`);
