@@ -16,7 +16,7 @@ inputs:
     description: 'Your access token for accesssing Pulumi'
     required: true
 outputs:
-  resource-ouput: # id of output
+  resource-output:
     description: 'The requested resource output from Pulumi'
 runs:
   using: 'node16'
