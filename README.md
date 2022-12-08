@@ -1,6 +1,6 @@
 # pulumi-outputs-action
 
-Get output values from Pulumi application for defined inputs
+Get output value from Pulumi application for defined inputs
 
 ## Inputs
 
