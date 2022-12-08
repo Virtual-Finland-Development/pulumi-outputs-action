@@ -16,7 +16,7 @@ jobs:
           pulumi-organization: 'virtualfinland'
           pulumi-project: 'authentication-gw'
           pulumi-stack: 'dev'
-          pulumi-resource: 'url'
+          pulumi-resource: 'endpoint'
           pulumi-access-token: ${{ secrets.PULUMI_ACCESS_TOKEN }}
 
       - name: Get the output
