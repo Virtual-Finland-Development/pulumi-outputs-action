@@ -28,7 +28,7 @@ try {
 
   let resourceOutput = '';
 
-  const resourceObject = esponse.data.deployment?.resources?.find(
+  const resourceObject = response.data.deployment?.resources?.find(
     r => r.type === 'pulumi:pulumi:Stack'
   );
 
