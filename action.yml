@@ -1,23 +1,23 @@
-name: 'Pulumi outputs'
-description: 'Get outputs from pulumi applications for defined inputs'
+name: Pulumi outputs
+description: Get resource output from Pulumi application for defined inputs
 inputs:
-  pulumi-organization:
-    description: 'Pulumi organization name (lowercase)'
+  organization:
+    description: Organization name
     required: true
-  pulumi-project:
-    description: 'Pulumi project (lowercase)'
-  pulumi-stack:
-    description: 'Pulumi project stack'
+  project:
+    description: Project name
+  stack:
+    description: Stack name
     required: true
-  pulumi-resource:
-    description: 'Requested project resource name'
+  resource:
+    description: Resource name
     required: true
-  pulumi-access-token:
-    description: 'Pulumi access token'
+  access-token:
+    description: Pulumi access token
     required: true
 outputs:
   resource-output:
-    description: 'The requested resource output from Pulumi'
+    description: The requested resource output from Pulumi
 runs:
-  using: 'node16'
-  main: 'index.js'
+  using: node16
+  main: index.js

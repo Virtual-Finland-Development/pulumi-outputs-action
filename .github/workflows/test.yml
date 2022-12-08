@@ -13,10 +13,10 @@ jobs:
         id: test
         uses: ./
         with:
-          pulumi-organization: 'virtualfinland'
-          pulumi-project: 'authentication-gw'
-          pulumi-stack: 'dev'
-          pulumi-resource: 'endpoint'
-          pulumi-access-token: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+          organization: virtualfinland
+          project: authentication-gw
+          stack: dev
+          resource: endpoint
+          access-token: ${{ secrets.PULUMI_ACCESS_TOKEN }}
       - name: Get the output
         run: echo 'The output was ${{ steps.test.outputs.resource-output }}'

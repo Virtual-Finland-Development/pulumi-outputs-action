@@ -3,15 +3,15 @@ const axios = require('axios');
 
 (async () => {
   try {
-    const org = core.getInput('pulumi-organization');
+    const org = core.getInput('organization');
     console.log(`Pulumi org: ${org}`);
-    const project = core.getInput('pulumi-project');
+    const project = core.getInput('project');
     console.log(`Pulumi project: ${project}`);
-    const stack = core.getInput('pulumi-stack');
+    const stack = core.getInput('stack');
     console.log(`Project stack: ${stack}`);
-    const resourceName = core.getInput('pulumi-resource');
+    const resourceName = core.getInput('resource');
     console.log(`Requested resource: ${resourceName}`);
-    const accessToken = core.getInput('pulumi-access-token');
+    const accessToken = core.getInput('access-token');
     console.log(
       `${
         accessToken
