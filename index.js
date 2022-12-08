@@ -26,6 +26,8 @@ try {
     },
   });
 
+  console.log(response);
+
   let resourceOutput = '';
 
   const resourceObject = response.data.deployment?.resources?.find(
