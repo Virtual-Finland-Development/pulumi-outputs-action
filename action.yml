@@ -7,13 +7,13 @@ inputs:
   pulumi-project:
     description: 'Pulumi project (lowercase)'
   pulumi-stack:
-    description: 'Pulumi stack'
+    description: 'Pulumi project stack'
     required: true
   pulumi-resource:
-    description: 'The output variable'
+    description: 'Requested project resource name'
     required: true
   pulumi-access-token:
-    description: 'Your access token for accesssing Pulumi'
+    description: 'Pulumi access token'
     required: true
 outputs:
   resource-output:
