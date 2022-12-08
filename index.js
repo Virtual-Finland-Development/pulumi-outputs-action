@@ -5,15 +5,21 @@ const axios = require('axios');
 (async () => {
   try {
     const org = core.getInput('pulumi-organization');
-    console.log(`Org: ${org}`);
+    console.log(`Pulumi org: ${org}`);
     const project = core.getInput('pulumi-project');
-    console.log(`Project: ${project}`);
+    console.log(`Pulumi project: ${project}`);
     const stack = core.getInput('pulumi-stack');
-    console.log(`Stack: ${stack}`);
+    console.log(`Project stack: ${stack}`);
     const resourceName = core.getInput('pulumi-resource');
-    console.log(`Resource: ${resourceName}`);
+    console.log(`Requested resource: ${resourceName}`);
     const accessToken = core.getInput('pulumi-access-token');
-    // console.log(`token ${accessToken}!`);
+    console.log(
+      `${
+        accessToken
+          ? 'Access token was provided!'
+          : 'Access token was not provided!'
+      }`
+    );
 
     const url = `https://api.pulumi.com/api/stacks/${org}/${project}/${stack}/export`;
 
@@ -27,25 +33,20 @@ const axios = require('axios');
       },
     });
 
-    console.log(response.data);
-
     let resourceOutput = '';
+    let resourceObject = null;
 
-    const resourceObject = response.data.deployment?.resources?.find(
-      r => r.type === 'pulumi:pulumi:Stack'
-    );
-
-    console.log('resourceObject:', resourceObject);
+    if (response.data?.deployment?.resources) {
+      resourceObject = response.data.deployment?.resources?.find(
+        r => r.type === 'pulumi:pulumi:Stack'
+      );
+    }
 
     if (resourceObject?.outputs) {
-      console.log('outputs found!');
       resourceOutput = resourceObject.outputs[`${resourceName}`] || '';
     }
 
     core.setOutput('resource-output', resourceOutput);
-    // Get the JSON webhook payload for the event that triggered the workflow
-    const payload = JSON.stringify(github.context.payload, undefined, 2);
-    console.log(`The event payload: ${payload}`);
   } catch (error) {
     core.setFailed(error.message);
   }
