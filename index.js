@@ -1,5 +1,4 @@
 const core = require('@actions/core');
-const github = require('@actions/github');
 const axios = require('axios');
 
 (async () => {
@@ -36,8 +35,11 @@ const axios = require('axios');
     let resourceOutput = '';
     let resourceObject = null;
 
-    if (response.data?.deployment?.resources) {
-      resourceObject = response.data.deployment?.resources?.find(
+    if (
+      response.data?.deployment?.resources &&
+      Array.isArray(response.data.deployment.resources)
+    ) {
+      resourceObject = response.data.deployment.resources.find(
         r => r.type === 'pulumi:pulumi:Stack'
       );
     }

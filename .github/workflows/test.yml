@@ -18,6 +18,5 @@ jobs:
           pulumi-stack: 'dev'
           pulumi-resource: 'endpoint'
           pulumi-access-token: ${{ secrets.PULUMI_ACCESS_TOKEN }}
-
       - name: Get the output
-        run: echo "The output was ${{ steps.test.outputs.resource-output }}"
+        run: echo 'The output was ${{ steps.test.outputs.resource-output }}'
