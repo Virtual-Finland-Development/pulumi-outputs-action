@@ -34,7 +34,7 @@ The output for the requested resource.
 
 ```yaml
 - name: Get Pulumi resource output
-    id: pulumi-resource-output
+    id: action-id
     uses: Virtual-Finland-Development/pulumi-outputs-action@v1
     with:
         organization: organization-name
@@ -42,4 +42,6 @@ The output for the requested resource.
         stack: dev
         resource: endpointUrl
         access-token: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+- name: Get the output
+    run: echo 'The output was ${{ steps.action-id.outputs.resource-output }}'
 ```
