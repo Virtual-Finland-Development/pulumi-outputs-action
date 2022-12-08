@@ -1,0 +1,21 @@
+on:
+  workflow_dispatch:
+    branches: ['main']
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Testing testing
+    steps:
+      - name: Testing pulumi outputs
+        id: test
+        uses: ./
+        with:
+          pulumi-organization: 'virtualfinland'
+          pulumi-project: 'authentication-gw'
+          pulumi-stack: 'dev'
+          pulumi-resource: 'url'
+          pulumi-access-token: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+
+      - name: Get the output
+        run: echo "The output was ${{ steps.test.outputs.resource-output }}"
