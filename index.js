@@ -10,9 +10,9 @@ try {
   const stack = core.getInput('pulumi-stack');
   console.log(`Stack ${stack}!`);
   const resourceName = core.getInput('pulumi-resource');
-  console.log(`Resource ${resource}!`);
+  console.log(`Resource ${resourceName}!`);
   const accessToken = core.getInput('pulumi-access-token');
-  console.log(`Resource ${resource}!`);
+  // console.log(`token ${accessToken}!`);
 
   const url = `https://api.pulumi.com/api/stacks/${org}/${project}/${stack}/export`;
 
