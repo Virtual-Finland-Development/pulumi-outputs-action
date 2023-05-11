@@ -51,7 +51,7 @@ Get resources:
 ```yaml
 - name: Get Pulumi resource output
     id: action-id
-    uses: Virtual-Finland-Development/pulumi-outputs-action@v1.1
+    uses: Virtual-Finland-Development/pulumi-outputs-action@v1
     with:
         organization: organization-name
         project: project-name
@@ -69,7 +69,7 @@ Get a single resource:
 ```yaml
 - name: Get Pulumi resource output
     id: action-id
-    uses: Virtual-Finland-Development/pulumi-outputs-action@v1.1
+    uses: Virtual-Finland-Development/pulumi-outputs-action@v1
     with:
         organization: organization-name
         project: project-name
