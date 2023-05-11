@@ -11,13 +11,18 @@ inputs:
     required: true
   resource:
     description: Resource name
-    required: true
+    required: false
+  resources:
+    description: Resource names
+    required: false
   access-token:
     description: Pulumi access token
     required: true
 outputs:
   resource-output:
     description: The requested resource output from Pulumi
+  resource-outputs:
+    description: Key-value pairs of the requested resource outputs from Pulumi
 runs:
   using: node16
   main: index.js
