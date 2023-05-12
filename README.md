@@ -25,10 +25,18 @@ The name of the Pulumi resource whose output you wish to get. Conditions for thi
 
 ### `resources`
 
-List of names of the Pulumi resource whose output you wish to get. Conditions for this input:
+Line-end separated list of names of the Pulumi resource whose output you wish to get. Conditions for this input:
 
 - if `resource` is defined, this input is ignored
 - if both `resource` and `resources` are not defined, all available resources are returned.
+
+example yml-input:
+
+```yaml
+resources: |
+  endpointUrl
+  another
+```
 
 ### `access-token`
 
@@ -56,7 +64,9 @@ Get resources:
         organization: organization-name
         project: project-name
         stack: dev
-        resources: ['endpointUrl', 'another']
+        resources: |
+            endpointUrl
+            another
         access-token: ${{ secrets.PULUMI_ACCESS_TOKEN }}
 - name: Get the outputs
     run: |

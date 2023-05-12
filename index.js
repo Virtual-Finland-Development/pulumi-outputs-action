@@ -24,7 +24,7 @@ function pluckObjectKeys(obj, keys) {
     console.log(`Project stack: ${stack}`);
 
     const resourceName = core.getInput('resource');
-    const resourceNames = core.getInput('resources');
+    const resourceNames = core.getMultilineInput('resources');
     if (resourceName) {
       if (typeof resourceName !== 'string') {
         throw new Error('Requested resource must be a string!');
