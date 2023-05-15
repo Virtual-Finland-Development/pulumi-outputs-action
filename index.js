@@ -89,19 +89,18 @@ function pluckObjectKeys(obj, keys) {
       resourceOutputs = resourceObject.outputs;
     }
 
-    // Static output
-    core.setOutput('resource-outputs', resourceOutputs);
-
     // Dynamic outputs
     for (const key in resourceOutputs) {
       core.setOutput(key, resourceOutputs[key]);
     }
 
     // set 'resource-output' for backwards compatibility
-    core.setOutput(
-      'resource-output',
-      resourceName ? resourceObject.outputs[`${resourceName}`] || '' : ''
-    );
+    if (typeof resourceOutputs[resourceName] === 'undefined') {
+      core.setOutput(
+        'resource-output',
+        resourceName ? resourceObject.outputs[resourceName] || '' : ''
+      );
+    }
   } catch (error) {
     core.setFailed(error.message);
   }

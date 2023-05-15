@@ -21,8 +21,6 @@ inputs:
 outputs:
   resource-output:
     description: The requested resource output from Pulumi
-  resource-outputs:
-    description: Key-value pairs of the requested resource outputs from Pulumi
 runs:
   using: node16
   main: index.js

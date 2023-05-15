@@ -44,9 +44,7 @@ resources: |
 
 ## Outputs
 
-### `resource-outputs`
-
-Key-value object map of the requested resources.
+Outputs are dynamically named after the resource names defined in `resources` input. If `resource` input is defined, the output is named `resource-output`.
 
 ### `resource-output`
 
@@ -70,8 +68,8 @@ Get resources:
         access-token: ${{ secrets.PULUMI_ACCESS_TOKEN }}
 - name: Get the outputs
     run: |
-        echo 'The endpointUrl output was ${{ steps.action-id.outputs.resource-outputs.endpointUrl }}'
-        echo 'The another output was ${{ steps.action-id.outputs.resource-outputs.another }}'
+        echo 'The endpointUrl output was ${{ steps.action-id.outputs.endpointUrl }}'
+        echo 'The another output was ${{ steps.action-id.outputs.another }}'
 ```
 
 Get a single resource:
@@ -88,6 +86,6 @@ Get a single resource:
         access-token: ${{ secrets.PULUMI_ACCESS_TOKEN }}
 - name: Get the output
     run: |
-        echo 'The endpointUrl output was: ${{ steps.action-id.outputs.resource-outputs.endpointUrl }}'
+        echo 'The endpointUrl output was: ${{ steps.action-id.outputs.endpointUrl }}'
         echo 'Backwards compatibilite syntax for endpointUrl output: resource-output=${{ steps.action-id.outputs.resource-output }}'
 ```
