@@ -80,18 +80,21 @@ function pluckObjectKeys(obj, keys) {
     //
     // Set outputs
     //
+    let resourceOutputs = null;
     if (resourceName) {
-      core.setOutput(
-        'resource-outputs',
-        pluckObjectKeys(resourceObject.outputs, [resourceName])
-      );
+      resourceOutputs = pluckObjectKeys(resourceObject.outputs, [resourceName]);
     } else if (resourceNames) {
-      core.setOutput(
-        'resource-outputs',
-        pluckObjectKeys(resourceObject.outputs, resourceNames)
-      );
+      resourceOutputs = pluckObjectKeys(resourceObject.outputs, resourceNames);
     } else {
-      core.setOutput('resource-outputs', resourceObject.outputs);
+      resourceOutputs = resourceObject.outputs;
+    }
+
+    // Static output
+    core.setOutput('resource-outputs', resourceOutputs);
+
+    // Dynamic outputs
+    for (const key in resourceOutputs) {
+      core.setOutput(key, resourceOutputs[key]);
     }
 
     // set 'resource-output' for backwards compatibility
