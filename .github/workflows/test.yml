@@ -21,7 +21,6 @@ jobs:
           access-token: ${{ secrets.PULUMI_ACCESS_TOKEN }}
       - name: Get the outputs
         run: |
-          echo 'The outputs were ${{ steps.test.outputs }}'
           echo 'The endpoint was ${{ steps.test.outputs.endpoint }}'
           echo 'The dynamoDBCacheTableName was ${{ steps.test.outputs.dynamoDBCacheTableName }}'
       - name: Testing old pulumi outputs
@@ -34,4 +33,4 @@ jobs:
           resource: endpoint
           access-token: ${{ secrets.PULUMI_ACCESS_TOKEN }}
       - name: Get the old style output
-        run: echo 'The output was ${{ steps.old-test.outputs.resource-output }}'
+        run: echo 'The old style output was ${{ steps.old-test.outputs.resource-output }}'

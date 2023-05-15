@@ -94,8 +94,8 @@ function pluckObjectKeys(obj, keys) {
       core.setOutput(key, resourceOutputs[key]);
     }
 
-    // set 'resource-output' for backwards compatibility
-    if (typeof resourceOutputs[resourceName] === 'undefined') {
+    // set 'resource-output' for backwards compatibility (if not already set)
+    if (typeof resourceOutputs['resource-output'] === 'undefined') {
       core.setOutput(
         'resource-output',
         resourceName ? resourceObject.outputs[resourceName] || '' : ''
