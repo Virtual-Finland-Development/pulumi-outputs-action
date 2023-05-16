@@ -11,7 +11,10 @@ inputs:
     required: true
   resource:
     description: Resource name
-    required: true
+    required: false
+  resources:
+    description: Resource names
+    required: false
   access-token:
     description: Pulumi access token
     required: true

@@ -1,6 +1,5 @@
 on:
   workflow_dispatch:
-    branches: ['main']
 
 jobs:
   test:
@@ -16,7 +15,22 @@ jobs:
           organization: virtualfinland
           project: authentication-gw
           stack: dev
+          resources: |
+            endpoint
+            dynamoDBCacheTableName
+          access-token: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+      - name: Get the outputs
+        run: |
+          echo 'The endpoint was ${{ steps.test.outputs.endpoint }}'
+          echo 'The dynamoDBCacheTableName was ${{ steps.test.outputs.dynamoDBCacheTableName }}'
+      - name: Testing old pulumi outputs
+        id: old-test
+        uses: ./
+        with:
+          organization: virtualfinland
+          project: authentication-gw
+          stack: dev
           resource: endpoint
           access-token: ${{ secrets.PULUMI_ACCESS_TOKEN }}
-      - name: Get the output
-        run: echo 'The output was ${{ steps.test.outputs.resource-output }}'
+      - name: Get the old style output
+        run: echo 'The old style output was ${{ steps.old-test.outputs.resource-output }}'
