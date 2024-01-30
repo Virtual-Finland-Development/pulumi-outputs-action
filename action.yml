@@ -22,5 +22,5 @@ outputs:
   resource-output:
     description: The requested resource output from Pulumi
 runs:
-  using: node16
+  using: node20
   main: index.js
